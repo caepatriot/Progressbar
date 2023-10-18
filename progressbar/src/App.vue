@@ -40,7 +40,7 @@ export default {
           checkpoint: {
             title: "checkpoint 3",
             done: true,
-            has: false,
+            has: true,
           },
         },
         {
@@ -66,7 +66,7 @@ export default {
         {
           title: "step 6",
           date: new Date("10/14/2023"),
-          duration: 10,
+          duration: 15,
           checkpoint: {
             title: "checkpoint 6",
             done: true,

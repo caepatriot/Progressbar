@@ -6,7 +6,9 @@
         :style="{ width: stepProgressWidth(step) + '%' }"
       ></div>
       <div v-if="step.checkpoint.has" class="checkpoint"></div>
-      <span class="step-progress-indicator">{{ step.title }}</span>
+      <span class="step-progress-indicator">{{
+        stepProgressWidth(step) + "%"
+      }}</span>
     </div>
   </div>
 </template>
@@ -43,9 +45,8 @@
   height: 100%;
 }
 
-.step:first-child{
+.step:first-child {
   border-radius: 50px 0 0 50px;
-
 }
 
 .step:last-child {
@@ -61,12 +62,18 @@
   border: 2px solid #fff;
   background: green;
   height: 130%;
-  /* width: 200%; */
   border-radius: 100%;
   left: 0;
   transform: translateX(-51%);
   aspect-ratio: 1/1;
   z-index: 10;
+}
+
+.checkpoint-done {
+  background-image: url("../../assets/icons/check.png");
+}
+
+.checkpoint-not-done {
 }
 </style>
 
@@ -76,7 +83,8 @@ export default {
   name: "Progress-bar",
   props: ["steps"],
   data() {
-    return {};
+    return {
+    };
   },
   mounted() {},
   computed: {},
@@ -91,7 +99,7 @@ export default {
       } else if (today > start && today < end) {
         var progress = this.dateDiff(start, today);
         var goal = this.dateDiff(start, end);
-        return (progress / goal) * 100;
+        return Math.ceil((progress / goal) * 100);
       } else {
         return 0;
       }
