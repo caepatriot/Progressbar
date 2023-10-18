@@ -1,6 +1,6 @@
 <template>
   <div class="progressbar">
-    <div class="step" v-for="step in steps" :key="step.title">
+    <div class="step" v-for="step in steps" :key="step.title" :style="{ 'width': isLongDuration(step) ? '100%' : '0%' }">
       <div
         class="progression"
         :style="{ width: stepProgressWidth(step) + '%' }"
@@ -87,7 +87,9 @@ export default {
     };
   },
   mounted() {},
-  computed: {},
+  computed: {
+
+  },
   methods: {
     stepProgressWidth(step) {
       var start = new Date(step.date);
@@ -112,8 +114,10 @@ export default {
       return diffDays;
     },
     isLongDuration(step) {
+      console.log(step.duration > 1);
       return step.duration > 1;
     },
+    
   },
 };
 </script>

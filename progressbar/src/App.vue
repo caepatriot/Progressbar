@@ -76,7 +76,7 @@ export default {
         {
           title: "step 7",
           date: new Date("12/12/2023"),
-          duration: 100,
+          duration: 1,
           checkpoint: {
             title: "checkpoint 7",
             done: true,
