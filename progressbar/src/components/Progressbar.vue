@@ -70,7 +70,7 @@
 }
 
 .checkpoint-done {
-  background-image: url("../../assets/icons/check.png");
+  /* background-image: url("../../assets/icons/check.png"); */
 }
 
 .checkpoint-not-done {
