@@ -1,10 +1,7 @@
 <template>
-  <div class="progressbar">
+  <div class="progressbar" :class="{ vertical: vertical }">
     <div class="step" v-for="step in steps" :key="step.title" :style="{ 'width': isLongDuration(step) ? '100%' : '0%' }">
-      <div
-        class="progression"
-        :style="{ width: stepProgressWidth(step) + '%' }"
-      ></div>
+      <div class="progression" :style="{ width: stepProgressWidth(step) + '%' }"></div>
       <div v-if="step.checkpoint.has" class="checkpoint"></div>
       <span class="step-progress-indicator">{{
         stepProgressWidth(step) + "%"
@@ -14,7 +11,7 @@
 </template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
 .progressbar {
   position: relative;
   display: flex;
@@ -26,6 +23,13 @@
   min-height: 10px;
   width: 50%;
 }
+
+
+// .vertical {
+//   flex-direction: column;
+//   height: 100%;
+//   width: 20px;
+// }
 
 .progression {
   position: absolute;
@@ -73,20 +77,25 @@
   /* background-image: url("../../assets/icons/check.png"); */
 }
 
-.checkpoint-not-done {
-}
+.checkpoint-not-done {}
 </style>
 
 
 <script>
 export default {
   name: "Progress-bar",
-  props: ["steps"],
+  props: ["steps", "vertical"],
+  setup() {
+  },
   data() {
     return {
+      // isVertical: this.vertical
     };
   },
-  mounted() {},
+  mounted() {
+    console.log(this.vertical);
+  },
+
   computed: {
 
   },
@@ -114,10 +123,10 @@ export default {
       return diffDays;
     },
     isLongDuration(step) {
-      console.log(step.duration > 1);
+      // console.log(step.duration > 1);
       return step.duration > 1;
     },
-    
+
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <Progressbar :steps="steps" />
+  <Progressbar :steps="steps" vertical/>
 </template>
 
 <script>
