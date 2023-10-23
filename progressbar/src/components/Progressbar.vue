@@ -1,11 +1,11 @@
 <template>
   <div class="progressbar" :class="isVerticalClass">
-    <div class="step" :class="isVerticalClass" v-for="step in steps" :key="step.title"
-      :style="{ 'width': isLongDuration(step) ? '100%' : '0%' }">
-      <div v-if="vertical" class="progression" :class="isVerticalClass" :style="{ height: stepProgressWidth(step) + '%' }"></div>
+    <div class="step" :class="isVerticalClass" v-for="step in steps" :key="step.title" :style="isFullDuration(step)">
+      <div v-if="vertical" class="progression" :class="isVerticalClass"
+        :style="{ height: stepProgressWidth(step) + '%' }"></div>
       <div v-else class="progression" :class="isVerticalClass" :style="{ width: stepProgressWidth(step) + '%' }"></div>
       <div v-if="step.checkpoint.has" class="checkpoint" :class="isVerticalClass"></div>
-      <span class="step-progress-indicator">{{
+      <span v-if="isLongDuration(step)" class="step-progress-indicator">{{
         stepProgressWidth(step) + "%"
       }}</span>
     </div>
@@ -74,11 +74,11 @@
   position: absolute;
 }
 
-.step.vertical:nth-child(even) > .step-progress-indicator{
+.step.vertical:nth-child(even)>.step-progress-indicator {
   transform: translateX(100%);
 }
 
-.step.vertical:nth-child(odd) > .step-progress-indicator{
+.step.vertical:nth-child(odd)>.step-progress-indicator {
   transform: translateX(-100%);
 }
 
@@ -143,9 +143,14 @@ export default {
   computed: {
     isVerticalClass: function () {
       return this.vertical ? 'vertical' : 'horizontal';
-    }
+    },
   },
+
   methods: {
+    isFullDuration(step) {
+      return this.vertical ? { 'height': this.isLongDuration(step) ? '100%' : '0%' } : { 'width': this.isLongDuration(step) ? '100%' : '0%' };
+    },
+
     stepProgressWidth(step) {
       var start = new Date(step.date);
       var today = new Date();
