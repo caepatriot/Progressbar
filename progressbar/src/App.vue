@@ -1,5 +1,5 @@
 <template>
-  <Progressbar :steps="steps"/>
+  <Progressbar :steps="steps" width="100%"/>
 </template>
 
 <script>
@@ -39,7 +39,7 @@ export default {
           duration: 20,
           checkpoint: {
             title: "checkpoint 3",
-            done: true,
+            done: false,
             has: true,
           },
         },
@@ -59,18 +59,18 @@ export default {
           duration: 50,
           checkpoint: {
             title: "checkpoint 5",
-            done: true,
+            done: false,
             has: true,
           },
         },
         {
           title: "step 6",
-          date: new Date("10/14/2023"),
-          duration: 15,
+          date: new Date("10/13/2023"),
+          duration: 35,
           checkpoint: {
             title: "checkpoint 6",
-            done: true,
             has: true,
+            date: new Date("10/13/2023")
           },
         },
         {
@@ -79,7 +79,7 @@ export default {
           duration: 1,
           checkpoint: {
             title: "checkpoint 7",
-            done: true,
+            done: false,
             has: true,
           },
         },
