@@ -125,8 +125,15 @@ export default {
   name: "Progress-bar",
   // props: ["steps", "vertical"],
   props: {
-    steps: Object,
-    vertical: Boolean
+    steps: {
+      type: Object,
+      required: true
+    },
+    vertical: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
   },
   setup() {
     // console.log(props);
