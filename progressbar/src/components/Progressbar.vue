@@ -177,7 +177,11 @@ export default {
       required: false,
       default: false
     },
-    width: String,
+    width: {
+      type: String,
+      required: false,
+      default: "100%"
+    }
   },
   setup() {},
   data() {
